@@ -28,4 +28,4 @@ $ mvn test
 ```
 $ mvn cobertura:cobertura
 ```
-To view Coverage reports, navigate to target/site/cobertura/index.html in your Finder/Windows Explorer. 
+To view Coverage reports, navigate to target/site/cobertura/index.html in your Finder/Windows Explorer after building the app. 
