@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CustomerDiscount</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.retail.simulator</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CustomerDiscount (com.retail.simulator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerDiscount</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+  <span class="absValue">
+    (14/ 16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.retail.simulator;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.Date;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public class CustomerDiscount extends DiscountService {
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;    private static final int DISCOUNT_PERCENTAGE = 5;
+<i>8</i>&nbsp;    private static final long VALID_REGISTRATION_DURATION = (1000L*60*60*24*365*2);
+<b class="fc"><i>9</i>&nbsp;    private User.UserType discountTouserType = User.UserType.CUSTOMER;</b>
+<i>10</i>&nbsp;    private User.UserType inputUserType;
+<i>11</i>&nbsp;    private int inputCategory;
+<i>12</i>&nbsp;    private double totalAmount;
+<i>13</i>&nbsp;    private long userRegistrationDate;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;    public CustomerDiscount(User.UserType userType, Object[] params) {</b>
+<b class="fc"><i>17</i>&nbsp;        this.inputUserType = userType;</b>
+<b class="fc"><i>18</i>&nbsp;        if( params.length &gt; 0 &amp;&amp; (params[0] instanceof Integer)) {</b>
+<b class="fc"><i>19</i>&nbsp;            this.inputCategory = (Integer) params[0];</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;        }
+<b class="fc"><i>22</i>&nbsp;        if( params.length &gt; 1 &amp;&amp; (params[1] instanceof Double))  {</b>
+<b class="nc"><i>23</i>&nbsp;            this.totalAmount = (Double) params[1];</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;        }
+<b class="fc"><i>26</i>&nbsp;        if( params.length &gt; 2 &amp;&amp; (params[2] instanceof Long)) {</b>
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;            this.userRegistrationDate= (Long) params[2];</b>
+<i>29</i>&nbsp;        }
+<b class="fc"><i>30</i>&nbsp;    }</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public boolean checkCondition() {
+<i>33</i>&nbsp;
+<b class="fc"><i>34</i>&nbsp;        return this.discountTouserType == this.inputUserType &amp;&amp;</b>
+<b class="fc"><i>35</i>&nbsp;                this.userRegistrationDate &lt;= (new Date().getTime() - VALID_REGISTRATION_DURATION);</b>
+<i>36</i>&nbsp;    }
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    public boolean checkRestriction() {
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;        return RestrictedDiscounts.restrictdValues.contains(this.inputCategory);</b>
+<i>41</i>&nbsp;    }
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    public double calculateDiscountAmount() {
+<b class="fc"><i>44</i>&nbsp;        if(checkCondition() &amp;&amp; !checkRestriction()) {</b>
+<b class="fc"><i>45</i>&nbsp;            return totalAmount * DISCOUNT_PERCENTAGE / 100;</b>
+<i>46</i>&nbsp;        }
+<b class="nc"><i>47</i>&nbsp;        return 0;</b>
+<i>48</i>&nbsp;    }
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-03-15 08:33</div>
+</div>
+</body>
+</html>
