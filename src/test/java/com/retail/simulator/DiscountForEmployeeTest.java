@@ -1,5 +1,7 @@
 package com.retail.simulator;
 
+import com.retail.simulator.models.User;
+import com.retail.simulator.services.DiscountForEmployee;
 import junit.framework.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

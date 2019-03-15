@@ -1,4 +1,4 @@
-package com.retail.simulator;
+package com.retail.simulator.models;
 
 public class Product {
 

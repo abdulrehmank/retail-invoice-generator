@@ -1,14 +1,17 @@
-package com.retail.simulator;
+package com.retail.simulator.services;
 
-public class DiscountForAffiliate extends DiscountService {
+import com.retail.simulator.models.User;
 
-    private static final int DISCOUNT_PERCENTAGE = 10;
-    private User.UserType discountToUserType = User.UserType.AFFILIATE;
+public class DiscountForEmployee extends DiscountService {
+
+    private static final int DISCOUNT_PERCENTAGE = 30;
+    private static final User.UserType discountTouserType = User.UserType.EMPLOYEE;
     private User.UserType inputUserType;
     private int inputCategory;
-    private double totalAmount;
+    private Double totalAmount;
 
-    public DiscountForAffiliate(User.UserType userType, Object[] params) {
+
+    public DiscountForEmployee(User.UserType userType, Object[] params) {
         this.inputUserType = userType;
         if( params.length > 0 && (params[0] instanceof Integer)) {
             this.inputCategory = (Integer) params[0];
@@ -16,13 +19,12 @@ public class DiscountForAffiliate extends DiscountService {
         }
         if( params.length > 1 && (params[1] instanceof Double)) {
             this.totalAmount = (Double) params[1];
-
         }
     }
 
     public boolean checkCondition() {
 
-        return this.discountToUserType == this.inputUserType;
+        return this.discountTouserType == this.inputUserType;
     }
 
     public boolean checkRestriction() {
@@ -31,9 +33,6 @@ public class DiscountForAffiliate extends DiscountService {
     }
 
     public double calculateDiscountAmount() {
-        if(checkCondition() && !checkRestriction()) {
             return totalAmount * DISCOUNT_PERCENTAGE / 100;
-        }
-        return 0;
     }
 }

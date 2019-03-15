@@ -1,4 +1,4 @@
-package com.retail.simulator;
+package com.retail.simulator.services;
 
 public abstract class DiscountService {
 

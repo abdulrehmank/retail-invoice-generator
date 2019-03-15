@@ -1,4 +1,4 @@
-package com.retail.simulator;
+package com.retail.simulator.services;
 
 import java.util.ArrayList;
 import java.util.Arrays;

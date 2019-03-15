@@ -1,5 +1,10 @@
 package com.retail.simulator;
 
+import com.retail.simulator.models.*;
+import com.retail.simulator.services.Chain;
+import com.retail.simulator.services.DiscountByValue;
+import com.retail.simulator.services.DiscountPercentageFacade;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

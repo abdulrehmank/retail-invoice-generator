@@ -1,4 +1,6 @@
-package com.retail.simulator;
+package com.retail.simulator.services;
+
+import com.retail.simulator.models.User;
 
 public abstract class DiscountByPercentageFactory {
 
