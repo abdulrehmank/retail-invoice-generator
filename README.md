@@ -1,7 +1,7 @@
 # Retail Store Discounts
 ------------
 
-An application to calculate discounts based on various categories and user types.
+An application to calculate net payable amount after applying discounts based on various user types and categories.
 
 ## Installation
 
