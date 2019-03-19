@@ -29,7 +29,7 @@ public class DiscountForAffiliate extends DiscountService {
 
     public boolean checkRestriction() {
 
-        return RestrictedToDiscount.restrictedCategories.contains(this.inputCategory);
+        return RestrictedToDiscount.getInstance().getRestrictedCategories().contains(this.inputCategory);
     }
 
     public double calculateDiscountAmount() {
@@ -37,5 +37,18 @@ public class DiscountForAffiliate extends DiscountService {
             return totalAmount * DISCOUNT_PERCENTAGE / 100;
         }
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DiscountForAffiliate)) return false;
+
+        DiscountForAffiliate that = (DiscountForAffiliate) o;
+
+        if (inputCategory != that.inputCategory) return false;
+        if (Double.compare(that.totalAmount, totalAmount) != 0) return false;
+        if (discountToUserType != that.discountToUserType) return false;
+        return inputUserType == that.inputUserType;
     }
 }

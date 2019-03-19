@@ -6,8 +6,21 @@ import java.util.List;
 
 public class RestrictedToDiscount {
 
-    public static List<Integer> restrictedCategories = new ArrayList<Integer>(Arrays.asList(2));
+    private static RestrictedToDiscount restrictedToDiscount = new RestrictedToDiscount();
 
+    private List<Integer> restrictedCategories;
+
+    private RestrictedToDiscount() {
+        restrictedCategories = new ArrayList<Integer>(Arrays.asList(2));
+    }
+
+    public static RestrictedToDiscount getInstance() {
+        return restrictedToDiscount;
+    }
+
+    public List<Integer> getRestrictedCategories() {
+        return restrictedCategories;
+    }
 
 
 

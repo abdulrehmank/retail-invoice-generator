@@ -20,12 +20,12 @@ public class DiscountPercentageFacade implements Chain {
     }
 
     public double process(User.UserType userType, Object... conditionalParams) {
-        double discountValue = calculateDiscount(userType, conditionalParams);
         double totalAmount = 0;
         if( conditionalParams.length > 1 && (conditionalParams[1] instanceof Double)) {
             totalAmount = (Double) conditionalParams[1];
 
         }
+        double discountValue = calculateDiscount(userType, conditionalParams);
         if(totalAmount > 0) {
             totalAmount-= discountValue;
         }

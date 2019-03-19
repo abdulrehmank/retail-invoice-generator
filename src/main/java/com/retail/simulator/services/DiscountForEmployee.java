@@ -29,10 +29,22 @@ public class DiscountForEmployee extends DiscountService {
 
     public boolean checkRestriction() {
 
-        return RestrictedToDiscount.restrictedCategories.contains(this.inputCategory);
+        return RestrictedToDiscount.getInstance().getRestrictedCategories().contains(this.inputCategory);
     }
 
     public double calculateDiscountAmount() {
             return totalAmount * DISCOUNT_PERCENTAGE / 100;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DiscountForEmployee)) return false;
+
+        DiscountForEmployee that = (DiscountForEmployee) o;
+
+        if (inputCategory != that.inputCategory) return false;
+        if (inputUserType != that.inputUserType) return false;
+        return totalAmount != null ? totalAmount.equals(that.totalAmount) : that.totalAmount == null;
     }
 }

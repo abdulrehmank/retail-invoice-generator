@@ -39,7 +39,7 @@ public class DiscountForCustomer extends DiscountService {
 
     public boolean checkRestriction() {
 
-        return RestrictedToDiscount.restrictedCategories.contains(this.inputCategory);
+        return RestrictedToDiscount.getInstance().getRestrictedCategories().contains(this.inputCategory);
     }
 
     public double calculateDiscountAmount() {
@@ -47,6 +47,20 @@ public class DiscountForCustomer extends DiscountService {
             return totalAmount * DISCOUNT_PERCENTAGE / 100;
         }
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DiscountForCustomer)) return false;
+
+        DiscountForCustomer that = (DiscountForCustomer) o;
+
+        if (inputCategory != that.inputCategory) return false;
+        if (Double.compare(that.totalAmount, totalAmount) != 0) return false;
+        if (userRegistrationDate != that.userRegistrationDate) return false;
+        if (discountTouserType != that.discountTouserType) return false;
+        return inputUserType == that.inputUserType;
     }
 
 }

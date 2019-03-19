@@ -1,4 +1,4 @@
-package com.retail.simulator;
+package com.retail.simulator.services;
 
 import com.retail.simulator.models.User;
 import com.retail.simulator.services.DiscountForAffiliate;
@@ -46,4 +46,5 @@ class DiscountForAffiliateTest {
     void calculateDiscountAmount() {
         Assert.assertEquals(240.0, discountForAffiliate.calculateDiscountAmount());
     }
+
 }

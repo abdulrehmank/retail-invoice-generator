@@ -1,4 +1,4 @@
-package com.retail.simulator;
+package com.retail.simulator.services;
 
 import com.retail.simulator.models.User;
 import com.retail.simulator.services.DiscountByValue;
